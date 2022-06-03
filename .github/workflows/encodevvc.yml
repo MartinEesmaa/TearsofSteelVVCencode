@@ -1,4 +1,4 @@
-name: Fix issue of GPAC
+name: Encode 360p VVC
 
 on:
 
@@ -14,7 +14,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
-      - name: Transcode from mp4 to yuv
+      - name: Rescale from y4m to 360p y4m
         run: |
           cd E:\
           E:
@@ -23,7 +23,7 @@ jobs:
         run: | 
           vvencapp --version
           mp4box -version
-      - name: Encode from YUV to VVC
+      - name: Encode from Y4M to VVC
         run: |
           cd E:\
           E:
