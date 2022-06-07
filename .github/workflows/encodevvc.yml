@@ -1,4 +1,4 @@
-name: Encode 480p VVC
+name: Encode 720p VVC
 
 on:
 
@@ -14,11 +14,11 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
-      - name: Rescale from y4m to 480p y4m
+      - name: Rescale from y4m to 720p y4m
         run: |
           cd E:\
           E:
-          ffmpeg -i tearsofsteel-4k.y4m -vf scale=854x356 -pix_fmt yuv420p -strict 1 tearsofsteel-480p.y4m
+          ffmpeg -i tearsofsteel-4k.y4m -vf scale=1280x534 -pix_fmt yuv420p -strict 1 tearsofsteel-720p.y4m
       - name: Check versions of installed
         run: | 
           vvencapp --version
@@ -27,14 +27,14 @@ jobs:
         run: |
           cd E:\
           E:
-          vvencapp -i tearsofsteel-480p.y4m -s 854x356 -r 24 --preset slow --qp 35 --tier high -o tearsofsteel-480p.266
+          vvencapp -i tearsofsteel-720p.y4m -s 1280x534 -r 24 --preset slow --qp 35 --tier high -o tearsofsteel-720p.266
       - name: Check .266 file info with mp4box
         run: |
           cd E:\
           E:
-          mp4box -no-probe -info tearsofsteel-480p.266
+          mp4box -no-probe -info tearsofsteel-720p.266
       - name: Check SHA256SUM of 266 file
         run: |
           cd E:\
           E:
-          certutil -hashfile tearsofsteel-480p.266 SHA256
+          certutil -hashfile tearsofsteel-720p.266 SHA256
