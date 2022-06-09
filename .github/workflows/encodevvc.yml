@@ -12,13 +12,9 @@ on:
 jobs:
   build:
     runs-on: self-hosted
+    timeout-minutes: 999
     steps:
       - uses: actions/checkout@v3
-      - name: Rescale from y4m to 1080p y4m
-        run: |
-          cd E:\
-          E:
-          ffmpeg -i tearsofsteel-4k.y4m -vf scale=1920x800 -pix_fmt yuv420p -strict 1 tearsofsteel-1080p.y4m
       - name: Check versions of installed
         run: | 
           vvencapp --version
